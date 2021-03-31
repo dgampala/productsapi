@@ -19,6 +19,13 @@ import com.myretail.restful.services.products.constants.ProductsConstants;
 import com.myretail.restful.services.products.exceptions.ProductsException;
 import com.myretail.restful.services.products.models.ProductModel;
 
+ /**
+  * 
+  * @author Dheeraj
+  * 1. getIdExternal() method takes in ID variable from the URI, substitutes {id} value in External URI
+  * 2. Modified External URI is called to caputure Product Name
+  *
+  */
 
 @Component
 public class ProductNameWebService {

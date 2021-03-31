@@ -19,8 +19,8 @@ import com.myretail.restful.services.products.models.CurrentPriceModel;
 import com.myretail.restful.services.products.service.Databean;
 /***
  * 
- * @author ramya
- *
+ * @author Dheeraj
+ * ProductsDao calls Database instance to capture Product Price
  */
 
 @Component

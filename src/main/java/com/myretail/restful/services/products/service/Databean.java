@@ -18,7 +18,9 @@ import com.myretail.restful.services.products.constants.ProductsConstants;
 
 /***
  * 
- * @author ramya
+ * @author Dheeraj
+ * 1. Connection to Couchbase DB is established
+ * 2. Connection to Couchbase Bucket is established
  *
  */
 @Service

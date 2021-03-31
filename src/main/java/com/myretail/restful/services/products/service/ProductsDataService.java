@@ -14,7 +14,10 @@ import com.myretail.restful.services.products.models.CurrentPriceModel;
 import com.myretail.restful.services.products.models.ProductModel;
 /***
  * 
- * @author ramya
+ * @author Dheeraj
+ * 1. ProductsDataService holds the methods which intern calls methods which 
+ * a. Captures Product Price
+ * b. Captures Product Name
  *
  */
 

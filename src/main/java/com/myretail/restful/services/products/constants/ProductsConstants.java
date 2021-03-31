@@ -1,5 +1,11 @@
 package com.myretail.restful.services.products.constants;
 
+/**
+ * 
+ * @author Dheeraj
+ * This file contains all Java Constants
+ *
+ */
 public class ProductsConstants {
 	
 	public static final String API_CALL_FAILURE = "API Call Failed";

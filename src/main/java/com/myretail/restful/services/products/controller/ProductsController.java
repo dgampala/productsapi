@@ -28,7 +28,11 @@ import com.myretail.restful.services.products.models.ProductModel;
 import com.myretail.restful.services.products.service.ProductsDataService;
 /***
  * 
- * @author ramya
+ * @author Dheeraj
+ * productController controller takes the {id} variable from the URI and does the following
+ * 1. Queries NoSQL DB(Couchbase) to get Product Price.
+ * 2. Calls and External API to get Product Name. 
+ * 3. Returns the Response to API. 
  *
  */
 @Controller
