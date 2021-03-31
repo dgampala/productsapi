@@ -14,7 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -33,7 +35,8 @@ import com.myretail.restful.services.products.service.ProductsDataService;
  * 1. Queries NoSQL DB(Couchbase) to get Product Price.
  * 2. Calls and External API to get Product Name. 
  * 3. Returns the Response to API. 
- *
+ * priceupdatecontroller takes the Response Body provided by URI
+ * 1. Upserts myRetail bucket with provided Product Price.
  */
 @Controller
 public class ProductsController {
@@ -87,6 +90,11 @@ public class ProductsController {
 		
 	}
 	
+	@RequestMapping(value="/products/{id}",method=RequestMethod.PUT)
+	@ResponseBody
+	public String priceupdatecontroller(@RequestBody ProductModel product) {
+		return productsService.setProductPricebyId(product.getId(),product.getCurrentPrice());
+	}
 		
 
 

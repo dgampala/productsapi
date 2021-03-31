@@ -3,24 +3,23 @@ package com.myretail.restful.services.products.dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
-import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Collection;
 import com.couchbase.client.java.kv.GetResult;
+import com.couchbase.client.java.kv.MutationResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myretail.restful.services.products.constants.ProductsConstants;
 import com.myretail.restful.services.products.exceptions.ProductsException;
 import com.myretail.restful.services.products.models.CurrentPriceModel;
-import com.myretail.restful.services.products.service.Databean;
 /***
  * 
  * @author Dheeraj
- * ProductsDao calls Database instance to capture Product Price
+ * 1. Get Request - getproductPriceById() method returns Product price from myRetail bucket
+ * 2. Put Request - setPricebyId() method upserts Product price to myRetail bucket
  */
 
 @Component
@@ -29,7 +28,6 @@ public class ProductsDao {
 	
 	@Autowired 
 	Collection retailPricingCollection ;
-	
 	ObjectMapper mapper = new ObjectMapper();
 
 	/*
@@ -59,9 +57,19 @@ public class ProductsDao {
 		return price ; 
 
 	}
-
-
-	
-	
+	/*
+	 * Upsert Product Price for the specified ID into database.
+	 */
+	public String setPricebyId(String id,CurrentPriceModel currentprice)  {
+		try { 
+			retailPricingCollection.upsert(id, currentprice);
+		}
+		catch(Exception e) { 
+			e.printStackTrace();
+			String Exception = ProductsConstants.DATABASE_CALL_FAILURE;
+			throw new ProductsException(Exception.replace("{ID}",id) , e); 
+		}
+		return "Data successfully upserted into "+ProductsConstants.DB_BUCKET_NAME +" bucket"; 
+	}
 
 }

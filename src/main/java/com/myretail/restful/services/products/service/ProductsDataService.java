@@ -47,8 +47,12 @@ public class ProductsDataService {
 		return product ; 
 	}
 	
-
-
-	
-
+	/*
+	 * Upserts provided data into myRetail bucket
+	 */
+	public String setProductPricebyId(String id, CurrentPriceModel currprice)  {
+		String pricebyId = dao.setPricebyId(id,currprice);
+		return pricebyId ; 
+	}
+		
 }
