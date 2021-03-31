@@ -42,6 +42,10 @@ Get user by id
 ```
 http://localhost:8081/products/{id}
 ```
+Put user by id
+```
+http://localhost:8081/products/{id}
+```
 
 ## Couchbase Buckets
 * Create bucket retailPrice
@@ -62,7 +66,7 @@ VALUES ("54456119", {     "value": 5.99,     "currency_code": "USD"   })
 ```
 
 
-## Postman Calls
+## Postman GET Calls
 ```Postman
 curl --location --request GET 'http://localhost:8081/products/13860428' --data-raw ''
 
@@ -73,5 +77,52 @@ curl --location --request GET 'http://localhost:8081/products/13264003' --data-r
 curl --location --request GET 'http://localhost:8081/products/12954218' --data-raw ''
 ```
 
+## Postman PUT Calls to update Price
+```Postman
+curl --location --request PUT 'http://localhost:8081/products/54456119' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "54456119",
+    "name": "The Big Lebowski (Blu-ray)",
+    "current_price": {
+        "currency_code": "USD",
+        "value": 5.99
+    }
+}'
+
+curl --location --request PUT 'http://localhost:8081/products/13860428' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "13860428",
+    "name": "The Big Lebowski (Blu-ray)",
+    "current_price": {
+        "currency_code": "USD",
+        "value": 7.99
+    }
+}'
+
+curl --location --request PUT 'http://localhost:8081/products/13264003' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "13264003",
+    "name": "The Big Lebowski (Blu-ray)",
+    "current_price": {
+        "currency_code": "USD",
+        "value": 7.99
+    }
+}'
+
+curl --location --request PUT 'http://localhost:8081/products/12954218' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": "12954218",
+    "name": "The Big Lebowski (Blu-ray)",
+    "current_price": {
+        "currency_code": "USD",
+        "value": 0.99
+    }
+}'
+
+```
 
 
